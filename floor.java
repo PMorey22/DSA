@@ -1,19 +1,37 @@
- static int floorSearch(int arr[], int n, int x)
-    {
-        // If last element is smaller than x
-        if (x >= arr[n - 1])
-            return n - 1;
- 
-        // If first element is greater than x
-        if (x < arr[0])
-            return -1;
- 
-        // Linearly search for the first element
-        // greater than x
-        for (int i = 1; i < n; i++)
-            if (arr[i] > x)
-                return (i - 1);
- 
-        return -1;
+package Binary_search;
+
+public class floor {
+    public static void main(String[] args) {
+        int[] arr = { 2, 3, 5, 9, 14, 16 };
+        int target = 8;
+        System.out.println(binarySearch(arr, target));
+
     }
+
+    static int binarySearch(int[] arr, int target) {
+        int start = 0;
+        int end = arr.length;
+
+        while (start <= end) {
+
+            int mid = start + (end - start) / 2;
+
+            if (arr[mid] > target) {
+                end = mid - 1;
+            }
+
+            else if (arr[mid] < target) {
+                start = mid + 1;
+            }
+
+            else {
+                return arr[mid];
+            }
+
+        }
+        return arr[end];
+    }
+
+}
+
  
